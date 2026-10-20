@@ -15,4 +15,8 @@ public class Area {
         return this.nome + " (" + this.codigo + ")";
     }
 
+    public void adicionarCurso(Curso c) {
+        this.cursos.add(c);
+    }
+
 }
