@@ -56,9 +56,39 @@ public class Curso {
 
         else if (media >= 8.0)
             return 5;
+
+        else 
+            return 0;
     }
 
-    public ??? ingressantes() {}
+    public ArrayList<Ingressante> ingressantes() {
+        ArrayList<Ingressante> alunosIngressantes = new ArrayList<>();
 
-    public ??? ingressantes(int s) {}
+        for (int i = 0; i < alunos.size(); i++) {
+        Aluno a = alunos.get(i);
+            
+        if (a instanceof Ingressante) {
+                Ingressante ing = (Ingressante) a;
+                alunosIngressantes.add(ing);
+            }
+        }
+        return alunosIngressantes;
+
+    }
+
+    public ArrayList<Ingressante> ingressantes(int s) {
+        ArrayList<Ingressante> alunosIngressantes = new ArrayList<>();
+
+        for (int i = 0; i < alunos.size(); i++) {
+        Aluno a = alunos.get(i);
+            
+        if (a instanceof Ingressante) {
+                Ingressante ing = (Ingressante) a;
+                if (ing.getSemInicio() == s)
+                    alunosIngressantes.add(ing);
+            }
+        }
+        return alunosIngressantes;
+    }
+
 }
