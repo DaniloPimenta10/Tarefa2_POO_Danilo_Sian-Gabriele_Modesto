@@ -16,6 +16,7 @@ public class Entrada {
      * NÃO ALTERE O ESTE CODIGO!!!!
      * @return Um objeto da classe Scanner de onde a entrada será lida
      */
+    
     public static Scanner abrirEntrada() {
         Scanner input = null;
         try {
