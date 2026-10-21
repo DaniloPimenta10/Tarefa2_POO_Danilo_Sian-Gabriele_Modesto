@@ -28,7 +28,7 @@ public class Curso {
             
             if (a instanceof Concluinte) {
                 Concluinte c = (Concluinte) a;
-                media += c.getNotaComponenteEspecifico() + c.getNotaFormacaoGeral();
+                media += c.notaFinal();
                 quantidade += 1;
             }
         }

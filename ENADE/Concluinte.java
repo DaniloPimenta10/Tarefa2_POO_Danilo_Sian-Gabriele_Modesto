@@ -7,5 +7,15 @@ public class Concluinte extends Aluno{
         super(n, m);
     }
 
+    public void cadastrarProva(double n1, double n2) {
+        this.notaFormacaoGeral = n1;
+        this.notaComponenteEspecifico = n2;
+    }
+
+    public double notaFinal() {
+        return notaComponenteEspecifico + notaFormacaoGeral;
+    }
+    
+
 
 }

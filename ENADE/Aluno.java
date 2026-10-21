@@ -17,5 +17,7 @@ public class Aluno {
         return questionarioRespondido;
     }
 
-    public void cadastrarResposta() {}
+    public void cadastrarResposta() {
+        this.questionarioRespondido = true;
+    }
 }
