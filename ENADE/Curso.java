@@ -18,7 +18,19 @@ public class Curso {
     public void adicionarAluno(Aluno a) {
         this.alunos.add(a);
     }
-    
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
     public double calcularMedia() {
         double media = 0.0;
         int quantidade = 0;

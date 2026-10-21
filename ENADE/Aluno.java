@@ -3,6 +3,14 @@ public class Aluno {
     protected String matricula; 
     protected Boolean questionarioRespondido;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
     public Aluno(String n, String m) {
         this.nome = n;
         this.matricula = m;

@@ -1,5 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -146,6 +147,25 @@ public class Entrada {
         System.out.println("Área cadastrada com sucesso!");
     }
 
+    public void imprimirResultadosConceito(Sistema s, int conceito, ArrayList<Curso> cursos) {
+        System.out.println("Cursos com conceito" + conceito + ":");
 
+        if (cursos.isEmpty()) {
+            System.out.println("Nenhum curso com conceito " + conceito + "encontrado.");
+            return;
+        }
 
+        for (Curso c : cursos) {
+            Area area = s.areaDoCurso(c);
+            System.out.println(Entrada.descreverCurso(c) + " - Área: " + Entrada.descreverArea(area));
+        }
+    }
+
+    private static String descreverArea(Area a) {
+        return a.getNome() + " (" + a.getCodigo() + ")";
+    }
+
+    private static String descreverCurso(Curso c) {
+        return c.getNome() + "(" + c.getCodigo() + ")";
+    }
 }
