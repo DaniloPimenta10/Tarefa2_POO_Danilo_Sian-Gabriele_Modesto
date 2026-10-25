@@ -17,6 +17,10 @@ public class Aluno {
         this.questionarioRespondido = false;
     }
 
+    public boolean isQuestionarioRespondido() {
+        return questionarioRespondido;
+    }
+
     public String toString() {
         return this.nome + " (" + this.matricula + ")";
     }

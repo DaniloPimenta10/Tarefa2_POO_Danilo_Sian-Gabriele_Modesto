@@ -18,6 +18,10 @@ public class Concluinte extends Aluno{
         return notaComponenteEspecifico;
     }
 
+    public boolean isPresente() {
+        return presente;
+    }
+
     public void cadastrarProva(double n1, double n2) {
         this.notaFormacaoGeral = n1;
         this.notaComponenteEspecifico = n2;
@@ -27,7 +31,14 @@ public class Concluinte extends Aluno{
     public double notaFinal() {
         return (3 * notaFormacaoGeral + 7 * notaComponenteEspecifico)/10.0;
     }
-    
+
+    public String toString () {
+        return super.toString() + " - CONCLUINTE";
+    }
+
+    public boolean regular() {
+        return super.regular() && presente;
+    }
 
 
 }

@@ -10,5 +10,8 @@ public class Ingressante extends Aluno{
         semInicio = s;
     }
 
+    public String toString() {
+        return super.toString() + " - INGRESSANTE";
+    }
     
 }
