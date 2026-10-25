@@ -147,7 +147,7 @@ public class Entrada {
         System.out.println("Área cadastrada com sucesso!");
     }
 
-    public void imprimirResultadosConceito(Sistema s, int conceito, ArrayList<Curso> cursos) {
+    public static void imprimirResultadosConceito(Sistema s, int conceito, ArrayList<Curso> cursos) {
         System.out.println("Cursos com conceito" + conceito + ":");
 
         if (cursos.isEmpty()) {
@@ -161,6 +161,26 @@ public class Entrada {
         }
     }
 
+    public static void imprimirResultadosArea(Area area, String nomeArea, ArrayList<Curso> cursos) {
+        if (area == null || cursos.isEmpty()) {
+            System.out.println("Nenhum curso na área " + nomeArea + "foi encontrado.");
+            return;
+        }
+        System.out.println("Conceitos dos cursos das área" + Entrada.descreverArea(area) + ":");
+        for (Curso c : cursos) {
+            System.out.println(Entrada.descreverCurso(c) + ": " + c.calcularConceito());
+        }
+    }
+
+    public static void imprimirIrregulares(Sistema s, ArrayList<Aluno> alunos) {
+        System.out.println("Alunos irregulares com o ENADE: ");
+        for (Aluno a : alunos) {
+            Curso curso = s.cursoAluno(a);
+            System.out.println(a + " - CURSO: " + Entrada.descreverCurso(curso));
+        }
+    }
+
+
     private static String descreverArea(Area a) {
         return a.getNome() + " (" + a.getCodigo() + ")";
     }
@@ -168,4 +188,23 @@ public class Entrada {
     private static String descreverCurso(Curso c) {
         return c.getNome() + "(" + c.getCodigo() + ")";
     }
+
+    private static void exibirAreas(Sistema s) {
+        System.out.println("Áreas cadastradas: ");
+        for (Area a : s.getAreas()) {
+            System.out.println(Entrada.descreverArea(a));
+        }
+    }
+
+    private static Curso lerCurso(Sistema s, Scanner input) {
+        System.out.println("Cursos cadastrados: ");
+        for (Curso c : s.getCursos()) {
+            System.out.println(Entrada.descreverCurso(c));
+        }
+        String codigo = Entrada.lerLinha("Digite o código do curso do aluno: ", input);
+        return s.buscarCurso(codigo);
+    }
+
+
+
 }

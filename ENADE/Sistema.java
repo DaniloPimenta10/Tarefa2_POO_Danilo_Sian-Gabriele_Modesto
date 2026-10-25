@@ -49,6 +49,25 @@ public class Sistema {
         Entrada.imprimirResultadosConceito(this, conceito, resultado);
     }
 
+    public void listarResultados(String nomeArea) {
+        Area a = buscarAreaNome(nomeArea);
+        ArrayList<Curso> resultado = new ArrayList<>();
+        if (a != null) {
+            resultado = a.getCursos();
+        }
+        Entrada.imprimirResultadosArea(a, nomeArea, resultado);
+    }
+
+    public void listarAlunosIrregulares() {
+        ArrayList<Aluno> resultado = new ArrayList<>();
+        for (Aluno a : alunos) {
+            if (!a.regular()) {
+                resultado.add(a);
+            }
+        }
+        Entrada.imprimirIrregulares(this, resultado);
+    }
+
     public Area areaDoCurso(Curso c) {
         for (Area a : areas) {
             if (a.getCursos().contains(c)) {
@@ -57,6 +76,53 @@ public class Sistema {
         }
         return null;
     }
+
+    public Area buscarAreaNome(String nome){
+        for (Area a : areas) {
+            if (a.getNome().equalsIgnoreCase(nome)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Area buscarAreaCodigo(String codigo) {
+        for (Area a : areas) {
+            if (a.getCodigo().equals(codigo)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Curso buscarCurso(String codigo) {
+        for (Curso c : cursos) {
+            if (c.getCodigo().equals(codigo)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public Aluno buscarAluno(String matricula) {
+        for (Aluno a : alunos) {
+            if (a.getMatricula().equals(matricula)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Curso cursoAluno(Aluno aluno) {
+        for (Curso c : cursos) {
+            if (c.getAlunos().contains(aluno)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+
 
 
 
