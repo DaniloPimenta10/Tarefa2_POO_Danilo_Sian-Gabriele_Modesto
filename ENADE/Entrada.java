@@ -88,7 +88,8 @@ public class Entrada {
                 "Escolha uma opção:\n" +
                 "1) Cadastro\n" +
                 "2) Relatórios\n" +
-                "0) Sair\n";
+                "0) Sair\n" +
+                "*********************\n\n";
 
         int op = Entrada.lerInteiro(msg, input);
 
@@ -108,7 +109,8 @@ public class Entrada {
                 "4) Cadastrar Aluno Concluinte\n" +
                 "5) Cadastrar Resposta de Questionário\n" +
                 "6) Cadastrar Resultado de Prova\n" +
-                "0) Voltar\n";
+                "0) Voltar\n" + 
+                "*********************\n\n";
 
         int op = Entrada.lerInteiro(msg, input);
 
@@ -140,19 +142,19 @@ public class Entrada {
     }
 
     public static void cadArea(Sistema s, Scanner input) {
-        String nome = Entrada.lerLinha("Digite o nome da área: ", input);
-        String codigo = Entrada.lerLinha("Digite o código da área: ", input);
+        String nome = Entrada.lerLinha("Digite o nome da área: \n", input);
+        String codigo = Entrada.lerLinha("Digite o código da área: \n", input);
 
         s.cadastrarArea(new Area(nome, codigo));
         System.out.println("Área cadastrada com sucesso!");
     }
 
     public static void cadCurso(Sistema s, Scanner input) {
-        String nome = Entrada.lerLinha("Digite o nome do curso: ", input);
-        String codigo = Entrada.lerLinha("Digite o código do curso: ", input);
+        String nome = Entrada.lerLinha("Digite o nome do curso: \n", input);
+        String codigo = Entrada.lerLinha("Digite o código do curso: \n", input);
 
         Entrada.exibirAreas(s);
-        String codArea = Entrada.lerLinha("Digite o código da área do curso: ", input);
+        String codArea = Entrada.lerLinha("Digite o código da área do curso: \n", input);
 
         Area area = s.buscarAreaCodigo(codArea);
         if (area == null) {
@@ -165,46 +167,46 @@ public class Entrada {
     }
 
     public static void cadIngressante(Sistema s, Scanner input) {
-        String nome = Entrada.lerLinha("Digite o nome do ingressante: ", input);
-        String matricula = Entrada.lerLinha("Digite a matrícula do ingressante: ", input);
-        int semestre = Entrada.lerInteiro("Digite o semestre de ingresso: ", input);
+        String nome = Entrada.lerLinha("Digite o nome do ingressante: \n", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do ingressante: \n", input);
+        int semestre = Entrada.lerInteiro("Digite o semestre de ingresso: \n", input);
 
         Curso curso = Entrada.lerCurso(s, input);
         if (curso == null) {
-            System.out.println("Curso não encontrado.");
+            System.out.println("Curso não encontrado.\n");
             return;
         }
 
         s.cadastrarAluno(new Ingressante(nome, matricula, semestre), curso);
-        System.out.println("Aluno ingressante cadastrado com sucesso!");
+        System.out.println("Aluno ingressante cadastrado com sucesso!\n");
     }
 
     public static void cadConcluinte(Sistema s, Scanner input) {
-        String nome = Entrada.lerLinha("Digite o nome do concluinte: ", input);
-        String matricula = Entrada.lerLinha("Digite a matrícula do concluinte: ", input);
+        String nome = Entrada.lerLinha("Digite o nome do concluinte: \n", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do concluinte: \n", input);
 
         Curso curso = Entrada.lerCurso(s, input);
         if (curso == null) {
-            System.out.println("Curso não encontrado.");
+            System.out.println("Curso não encontrado.\n");
             return;
         }
 
         s.cadastrarAluno(new Concluinte(nome, matricula), curso);
-        System.out.println("Aluno concluinte cadastrado com sucesso!");
+        System.out.println("Aluno concluinte cadastrado com sucesso!\n");
     }
 
     public static void cadResposta(Sistema s, Scanner input) {
-        System.out.println("Alunos cadastrados:");
+        System.out.println("Alunos cadastrados: ");
         for (Aluno a : s.getAlunos()) {
             if (!a.isQuestionarioRespondido()) {
                 System.out.println(a);
             }
         }
 
-        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que respondeu ao questionário: ", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que respondeu ao questionário: \n\n", input);
         Aluno aluno = s.buscarAluno(matricula);
         if (aluno == null) {
-            System.out.println("Aluno não encontrado.");
+            System.out.println("Aluno não encontrado. \n");
             return;
         }
 
@@ -213,7 +215,7 @@ public class Entrada {
     }
 
     public static void cadProva(Sistema s, Scanner input) {
-        System.out.println("Concluintes cadastrados:");
+        System.out.println("Concluintes cadastrados:\n");
         for (Aluno a : s.getAlunos()) {
             if (a instanceof Concluinte) {
                 Concluinte c = (Concluinte) a;
@@ -223,16 +225,16 @@ public class Entrada {
             }
         }
 
-        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que realizou a prova: ", input);
-        double n1 = Entrada.lerDouble("Digite o valor da nota de formação geral: ", input);
-        double n2 = Entrada.lerDouble("Digite o valor da nota de conhecimentos específicos: ", input);
+        String matricula = Entrada.lerLinha("Digite a matrícula do aluno que realizou a prova: \n", input);
+        double n1 = Entrada.lerDouble("Digite o valor da nota de formação geral: \n", input);
+        double n2 = Entrada.lerDouble("Digite o valor da nota de conhecimentos específicos: \n\n", input);
 
         Aluno aluno = s.buscarAluno(matricula);
         if (aluno instanceof Concluinte) {
             ((Concluinte) aluno).cadastrarProva(n1, n2);
-            System.out.println("Prova cadastrada com sucesso!");
+            System.out.println("Prova cadastrada com sucesso!\n");
         } else {
-            System.out.println("Concluinte não encontrado.");
+            System.out.println("Concluinte não encontrado.\n");
         }
     }
 
@@ -241,7 +243,8 @@ public class Entrada {
                 "1) Listar Resultados por Conceito\n" +
                 "2) Listar Resultados por Área\n" +
                 "3) Listar Alunos Irregulares\n" +
-                "0) Voltar\n";
+                "0) Voltar\n" + 
+                "*********************\n\n";
 
         int op = Entrada.lerInteiro(msg, input);
 
@@ -263,13 +266,13 @@ public class Entrada {
     }
 
     public static void relConceito(Sistema s, Scanner input) {
-        int conceito = Entrada.lerInteiro("Digite o conceito desejado (1 a 5): ", input);
+        int conceito = Entrada.lerInteiro("Digite o conceito desejado (1 a 5): \n", input);
         s.listarResultados(conceito);
     }
 
     public static void relArea(Sistema s, Scanner input) {
         Entrada.exibirAreas(s);
-        String nomeArea = Entrada.lerLinha("Digite o nome da área: ", input);
+        String nomeArea = Entrada.lerLinha("Digite o nome da área: \n", input);
         s.listarResultados(nomeArea);
     }
 
@@ -278,10 +281,10 @@ public class Entrada {
     }
 
     public static void imprimirResultadosConceito(Sistema s, int conceito, ArrayList<Curso> cursos) {
-        System.out.println("Cursos com conceito" + conceito + ":");
+        System.out.println("Cursos com conceito " + conceito + ": ");
 
         if (cursos.isEmpty()) {
-            System.out.println("Nenhum curso com conceito " + conceito + "encontrado.");
+            System.out.println("Nenhum curso com conceito " + conceito + " encontrado. \n");
             return;
         }
 
@@ -296,14 +299,14 @@ public class Entrada {
             System.out.println("Nenhum curso na área " + nomeArea + "foi encontrado.");
             return;
         }
-        System.out.println("Conceitos dos cursos das área" + Entrada.descreverArea(area) + ":");
+        System.out.println("Conceitos dos cursos da área " + Entrada.descreverArea(area) + ": \n");
         for (Curso c : cursos) {
-            System.out.println(Entrada.descreverCurso(c) + ": " + c.calcularConceito());
+            System.out.println(Entrada.descreverCurso(c) + ": " + c.calcularConceito() + "\n");
         }
     }
 
     public static void imprimirIrregulares(Sistema s, ArrayList<Aluno> alunos) {
-        System.out.println("Alunos irregulares com o ENADE: ");
+        System.out.println("Alunos irregulares com o ENADE: \n");
         for (Aluno a : alunos) {
             Curso curso = s.cursoAluno(a);
             System.out.println(a + " - CURSO: " + Entrada.descreverCurso(curso));
@@ -320,18 +323,18 @@ public class Entrada {
     }
 
     private static void exibirAreas(Sistema s) {
-        System.out.println("Áreas cadastradas: ");
+        System.out.println("Áreas cadastradas: \n");
         for (Area a : s.getAreas()) {
-            System.out.println(Entrada.descreverArea(a));
+            System.out.println(Entrada.descreverArea(a) + "\n");
         }
     }
 
     private static Curso lerCurso(Sistema s, Scanner input) {
-        System.out.println("Cursos cadastrados: ");
+        System.out.println("Cursos cadastrados: \n");
         for (Curso c : s.getCursos()) {
             System.out.println(Entrada.descreverCurso(c));
         }
-        String codigo = Entrada.lerLinha("Digite o código do curso do aluno: ", input);
+        String codigo = Entrada.lerLinha("Digite o código do curso do aluno: \n", input);
         return s.buscarCurso(codigo);
     }
 
