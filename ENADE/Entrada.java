@@ -146,24 +146,24 @@ public class Entrada {
         String codigo = Entrada.lerLinha("Digite o código da área: \n", input);
 
         s.cadastrarArea(new Area(nome, codigo));
-        System.out.println("Área cadastrada com sucesso!");
+        System.out.println("Área cadastrada com sucesso!\n ");
     }
 
     public static void cadCurso(Sistema s, Scanner input) {
         String nome = Entrada.lerLinha("Digite o nome do curso: \n", input);
-        String codigo = Entrada.lerLinha("Digite o código do curso: \n", input);
+        String codigo = Entrada.lerLinha("Digite o código do curso: \n\n", input);
 
         Entrada.exibirAreas(s);
-        String codArea = Entrada.lerLinha("Digite o código da área do curso: \n", input);
+        String codArea = Entrada.lerLinha("Digite o código da área do curso: \n\n", input);
 
         Area area = s.buscarAreaCodigo(codArea);
         if (area == null) {
-            System.out.println("Área não encontrada.");
+            System.out.println("Área não encontrada.\n");
             return;
         }
 
         s.cadastrarCurso(new Curso(nome, codigo), area);
-        System.out.println("Curso cadastrado com sucesso!");
+        System.out.println("Curso cadastrado com sucesso!\n");
     }
 
     public static void cadIngressante(Sistema s, Scanner input) {
