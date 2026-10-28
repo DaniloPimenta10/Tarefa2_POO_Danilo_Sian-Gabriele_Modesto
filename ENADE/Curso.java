@@ -57,13 +57,13 @@ public class Curso {
         if (media < 2.0)
             return 1;
         
-        else if (media >= 2.0 || media < 4.0)
+        else if (media >= 2.0 && media < 4.0)
             return 2;
 
-        else if (media >= 4.0 || media < 6.0)
+        else if (media >= 4.0 && media < 6.0)
             return 3;
         
-        else if (media >= 6.0 || media < 8.0)
+        else if (media >= 6.0 && media < 8.0)
             return 4;
 
         else if (media >= 8.0)
